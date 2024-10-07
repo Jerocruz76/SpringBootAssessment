@@ -3,7 +3,9 @@ package com.riwi.SpringBootAssessment.application.services.impl;
 import com.riwi.SpringBootAssessment.application.dto.request.PalletRequest;
 import com.riwi.SpringBootAssessment.application.dto.response.PalletResponse;
 import com.riwi.SpringBootAssessment.application.services.interfaces.PalletService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PalletImpl implements PalletService {
 
     @Override

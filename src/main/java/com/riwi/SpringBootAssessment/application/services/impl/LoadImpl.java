@@ -3,7 +3,9 @@ package com.riwi.SpringBootAssessment.application.services.impl;
 import com.riwi.SpringBootAssessment.application.dto.request.LoadRequest;
 import com.riwi.SpringBootAssessment.application.dto.response.LoadResponse;
 import com.riwi.SpringBootAssessment.application.services.interfaces.LoadService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LoadImpl implements LoadService {
     @Override
     public LoadResponse create(LoadRequest loadRequest) {
