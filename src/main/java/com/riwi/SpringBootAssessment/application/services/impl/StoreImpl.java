@@ -9,7 +9,10 @@ import com.riwi.SpringBootAssessment.domain.repositories.StoreRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
+
+import java.util.Optional;
 
 @Service
 public class StoreImpl implements StoreService {
@@ -37,7 +40,7 @@ public class StoreImpl implements StoreService {
     @Transactional
     public boolean delete(Long id) {
         Store existingStore = storeRepository.findById(id).orElseThrow(
-                () -> new HttpServerErrorException(HttpStatus.NOT_FOUND,"Store with id " + id + "not found")
+                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND,"Store with id " + id + "not found")
         );
         storeRepository.delete(existingStore);
         return true;
@@ -45,13 +48,25 @@ public class StoreImpl implements StoreService {
 
     @Override
     @Transactional
-    public Long getById(StoreResponse storeResponse) {
-        return null;
+    public Store getById(Long id) {
+        return storeRepository.findById(id).orElseThrow(
+                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND,"Store with id " + id)
+        );
     }
 
     @Override
     @Transactional
-    public StoreRequest update(Long aLong, StoreRequest request) {
-        return null;
+    public StoreRequest update(Long id, StoreRequest request) {
+        Optional<Store> existingStore = storeRepository.findById(id);
+        if (existingStore.isEmpty()) {
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Store with id " + id + " not found");
+        }else {
+            Store storeToUpdate = existingStore.get();
+            storeToUpdate.setName(request.getName());
+            storeToUpdate.setAddress(request.getAddress());
+            storeToUpdate.setStatusStore(request.getStatusStore());
+            storeRepository.save(storeToUpdate);
+            return request;
+        }
     }
 }

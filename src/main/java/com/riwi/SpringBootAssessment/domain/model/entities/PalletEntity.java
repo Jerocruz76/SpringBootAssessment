@@ -18,7 +18,7 @@ public class PalletEntity {
     private Long id;
 
     @Column(name = "weight_capacity", nullable = false)
-    private Float weight_capacity;
+    private Float weightCapacity;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "material", nullable = false)
@@ -30,5 +30,5 @@ public class PalletEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "load_id",nullable = false,referencedColumnName = "id")
-    private LoadEntity load_id;
+    private LoadEntity loadId;
 }

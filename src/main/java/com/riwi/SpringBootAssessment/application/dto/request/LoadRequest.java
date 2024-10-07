@@ -1,5 +1,6 @@
 package com.riwi.SpringBootAssessment.application.dto.request;
 
+import com.riwi.SpringBootAssessment.domain.model.entities.UserEntity;
 import com.riwi.SpringBootAssessment.domain.model.enums.StatusLoad;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -20,5 +21,5 @@ public class LoadRequest {
     private StatusLoad status;
 
     @NotBlank(message="carrier is required")
-    private Long carrierId;
+    private UserEntity carrierId;
 }

@@ -1,5 +1,6 @@
 package com.riwi.SpringBootAssessment.application.dto.request;
 
+import com.riwi.SpringBootAssessment.domain.model.entities.LoadEntity;
 import com.riwi.SpringBootAssessment.domain.model.enums.Material;
 import com.riwi.SpringBootAssessment.domain.model.enums.StatusPallet;
 import jakarta.validation.constraints.NotBlank;
@@ -21,5 +22,5 @@ public class PalletRequest {
     private StatusPallet status;
 
     @NotBlank(message = "load is required")
-    private Long loadId;
+    private LoadEntity loadId;
 }

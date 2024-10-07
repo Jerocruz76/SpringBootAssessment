@@ -10,7 +10,7 @@ import com.riwi.SpringBootAssessment.domain.model.entities.PalletEntity;
 
 public interface PalletService extends
         Create<PalletRequest, PalletResponse>,
-        GetById<Long, PalletResponse>,
+        GetById<PalletEntity, Long>,
         Update<Long, PalletRequest>,
         Delete<Long> {
 }
