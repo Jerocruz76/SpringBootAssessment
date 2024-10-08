@@ -2,6 +2,7 @@ package com.riwi.SpringBootAssessment.application.mappers;
 
 import com.riwi.SpringBootAssessment.application.dto.request.PalletRequest;
 import com.riwi.SpringBootAssessment.application.dto.response.PalletResponse;
+import com.riwi.SpringBootAssessment.domain.model.entities.LoadEntity;
 import com.riwi.SpringBootAssessment.domain.model.entities.PalletEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,8 +19,8 @@ public interface PalletMapper {
     @Mapping(source = "loadId", target = "loadId")
     PalletResponse toResponse(PalletEntity palletEntity);
 
-    default Long map(PalletEntity palletEntity){
-        return palletEntity != null ? palletEntity.getId() : null;
+    default Long map(LoadEntity loadEntity){
+        return loadEntity != null ? loadEntity.getId() : null;
     }
 
 }

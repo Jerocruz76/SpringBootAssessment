@@ -28,5 +28,5 @@ public class LoadEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carried_id", nullable = false, referencedColumnName = "id")
-    private UserEntity carrier_id;
+    private UserEntity carrierId;
 }

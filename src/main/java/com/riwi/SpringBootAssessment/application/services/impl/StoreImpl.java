@@ -38,16 +38,6 @@ public class StoreImpl implements StoreService {
 
     @Override
     @Transactional
-    public boolean delete(Long id) {
-        Store existingStore = storeRepository.findById(id).orElseThrow(
-                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND,"Store with id " + id + "not found")
-        );
-        storeRepository.delete(existingStore);
-        return true;
-    }
-
-    @Override
-    @Transactional
     public Store getById(Long id) {
         return storeRepository.findById(id).orElseThrow(
                 () -> new HttpClientErrorException(HttpStatus.NOT_FOUND,"Store with id " + id)

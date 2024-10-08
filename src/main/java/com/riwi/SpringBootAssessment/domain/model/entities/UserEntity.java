@@ -3,14 +3,14 @@ package com.riwi.SpringBootAssessment.domain.model.entities;
 import com.riwi.SpringBootAssessment.domain.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "users")
+@Entity(name = "users")
 public class UserEntity extends AuditableEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -26,19 +26,10 @@ public class LoadImpl implements LoadService {
                 .description(loadRequest.getDescription())
                 .weight(loadRequest.getWeight())
                 .status(loadRequest.getStatus())
-                .carrier_id(loadRequest.getCarrierId())
+                .carrierId(loadRequest.getCarrierId())
                 .build();
         loadRepository.save(newLoad);
         return LoadMapper.INSTANCE.toResponse(newLoad);
-    }
-
-    @Override
-    public boolean delete(Long id) {
-        LoadEntity existingLoad = loadRepository.findById(id).orElseThrow(
-                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Load with id " + id + " not found")
-        );
-        loadRepository.delete(existingLoad);
-        return true;
     }
 
     @Override
@@ -58,7 +49,7 @@ public class LoadImpl implements LoadService {
             loadToUpdate.setDescription(request.getDescription());
             loadToUpdate.setWeight(request.getWeight());
             loadToUpdate.setStatus(request.getStatus());
-            loadToUpdate.setCarrier_id(request.getCarrierId());
+            loadToUpdate.setCarrierId(request.getCarrierId());
             loadRepository.save(loadToUpdate);
             return request;
         }

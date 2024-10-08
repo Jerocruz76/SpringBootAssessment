@@ -25,20 +25,13 @@ public class LoadController {
         return response;
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable Long id){
-        boolean deleted = loadImpl.delete(id);
-        if(deleted) return ResponseEntity.ok(HttpStatus.NO_CONTENT);
-        else return ResponseEntity.notFound().build();
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<LoadEntity> getById(@PathVariable Long id){
         LoadEntity response = loadImpl.getById(id);
         return ResponseEntity.ok(response);
     }
 
-    @PatchMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<LoadRequest> update(@PathVariable Long id, @RequestBody LoadRequest request){
         LoadRequest loadRequest = loadImpl.update(id, request);
         return ResponseEntity.ok(loadRequest);

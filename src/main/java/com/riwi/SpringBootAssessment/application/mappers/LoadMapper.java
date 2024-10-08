@@ -3,6 +3,7 @@ package com.riwi.SpringBootAssessment.application.mappers;
 import com.riwi.SpringBootAssessment.application.dto.request.LoadRequest;
 import com.riwi.SpringBootAssessment.application.dto.response.LoadResponse;
 import com.riwi.SpringBootAssessment.domain.model.entities.LoadEntity;
+import com.riwi.SpringBootAssessment.domain.model.entities.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -11,13 +12,13 @@ import org.mapstruct.factory.Mappers;
 public interface LoadMapper {
     LoadMapper INSTANCE = Mappers.getMapper(LoadMapper.class);
 
-    @Mapping(source = "carrierId", target = "carriedId")
+    @Mapping(source = "carrierId", target = "carrierId")
     LoadEntity toEntity(LoadRequest loadRequest);
 
-    @Mapping(source = "carriedId", target = "carriedId")
+    @Mapping(source = "carrierId", target = "carrierId")
     LoadResponse toResponse(LoadEntity loadEntity);
 
-    default Long map(LoadEntity loadEntity){
-        return loadEntity != null ? loadEntity.getId() : null;
+    default Long map(UserEntity userEntity){
+        return userEntity != null ? userEntity.getId() : null;
     }
 }
