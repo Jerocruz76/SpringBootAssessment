@@ -9,6 +9,7 @@ import com.riwi.SpringBootAssessment.infrastructure.security.JwtUtils;
 import com.riwi.SpringBootAssessment.infrastructure.security.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,12 +25,16 @@ import java.util.Optional;
 public class AuthService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
     private JwtUtils jwtUtils;
 
+    @Autowired
     private AuthenticationManager authManager;
 
     public void register(RegisterRequest request){
