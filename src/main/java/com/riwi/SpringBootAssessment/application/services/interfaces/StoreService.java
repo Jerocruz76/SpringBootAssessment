@@ -10,7 +10,6 @@ import com.riwi.SpringBootAssessment.domain.model.entities.Store;
 
 public interface StoreService extends
         Create<StoreRequest, StoreResponse>,
-        Delete<Long>,
         GetById<Store, Long>,
         Update<Long, StoreRequest> {
 }

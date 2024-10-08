@@ -10,7 +10,6 @@ import com.riwi.SpringBootAssessment.domain.model.entities.LoadEntity;
 
 public interface LoadService extends
         Create<LoadRequest, LoadResponse>,
-        Delete<Long>,
         GetById<LoadEntity, Long>,
         Update<Long, LoadRequest> {
 }
